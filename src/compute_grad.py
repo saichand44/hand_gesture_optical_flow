@@ -121,6 +121,8 @@ def compute_It(imgs):
 
     It = None
 
+    total_frames = imgs.shape[2]
+
     #===========================================================================
     # CONVOLUTION USING GRADIENT OF G IN TIME DIRECTION
     #===========================================================================
@@ -138,7 +140,7 @@ def compute_It(imgs):
     #===========================================================================
     # CONVOLUTION USING G IN X, Y DIRECTION
     #===========================================================================
-    for frame in range(imgs.shape[2]):
+    for frame in range(total_frames):
         # smoothing in Y direction
         It[:, :, frame] = convolve1d(It[:, :, frame], weights=KERNEL_G, axis=0)
         # smoothing in X direction
